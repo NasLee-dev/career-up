@@ -6,9 +6,26 @@ import {
   appNetworkBasename,
   appPostingBaseName,
 } from "../constants/prefix";
-import { Icon } from "@career-up/ui-kit";
+import { Button, Icon } from "@career-up/ui-kit";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Layout() {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const handleLogin = async () => {
+    await loginWithRedirect({
+      appState: {
+        returnTo: "/",
+      },
+    });
+  };
+
+  const handleLogout = async () => {
+    await logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+  };
   return (
     <div>
       <header className="global-nav">
@@ -41,6 +58,24 @@ export default function Layout() {
             </svg>
             <span>Career Up</span>
           </Link>
+          {!isAuthenticated && (
+            <div
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              <Button onClick={handleLogin}>Login</Button>
+            </div>
+          )}
+          {isAuthenticated && (
+            <div
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              <Button onClick={handleLogout}>Logout</Button>
+            </div>
+          )}
           <nav className="global-nav-nav">
             <ul className="global-nav-items">
               <li className="global-nav-item">
@@ -77,9 +112,7 @@ export default function Layout() {
           </nav>
         </div>
       </header>
-      <div className="global-container">
-        <Outlet />
-      </div>
+      <div className="global-container">{isAuthenticated && <Outlet />}</div>
     </div>
   );
 }
