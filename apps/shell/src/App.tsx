@@ -1,6 +1,5 @@
 import React from "react";
-import "@career-up/ui-kit/index.css";
-import Router from "./Router";
+import Router from "./router";
 
 const App = () => <Router />;
 
