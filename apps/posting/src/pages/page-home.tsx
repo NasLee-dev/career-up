@@ -2,7 +2,7 @@ import "./page-home.scss";
 
 import React, { useEffect, useState } from "react";
 import Profile from "../components/profile";
-import { type PostType } from "../types";
+import { PostType } from "../types";
 import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";
 import WritePost from "../components/write-post";

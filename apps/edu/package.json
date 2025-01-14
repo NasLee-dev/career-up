@@ -1,11 +1,11 @@
 {
-  "name": "@career-up/posting",
+  "name": "@career-up/edu",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:start": "cd dist && PORT=3001 npx serve",
-    "start": "webpack serve --open --mode development",
+    "build:start": "cd dist && PORT=3002 npx serve",
+    "start": "webpack serve --mode development",
     "start:live": "webpack serve --mode development --live-reload --hot"
   },
   "license": "MIT",
@@ -44,6 +44,9 @@
     "@babel/runtime": "^7.26.0",
     "@career-up/shell-router": "workspace:*",
     "@career-up/ui-kit": "workspace:*",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "jotai": "^2.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.1.1"

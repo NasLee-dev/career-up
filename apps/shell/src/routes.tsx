@@ -4,11 +4,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import React, { Suspense } from "react";
-import { appPostingBaseName } from "./constants/prefix";
+import { appEduBasename, appPostingBaseName } from "./constants/prefix";
 import Layout from "./components/layout";
 import Auth0ProviderWithNavigator from "./components/auth0-provider-with-navigator";
 
 const AppPostingLazy = React.lazy(() => import("./components/app-posting"));
+const AppEduLazy = React.lazy(() => import("./components/app-edu"));
 
 const browserRouter = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const browserRouter = createBrowserRouter([
         element: (
           <Suspense fallback="Loading Posting...">
             <AppPostingLazy />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${appEduBasename}/*`,
+        element: (
+          <Suspense fallback="Loading Edu...">
+            <AppEduLazy />
           </Suspense>
         ),
       },

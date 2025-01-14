@@ -1,10 +1,11 @@
-import { getUser } from "../apis";
-import { useAuth0Client } from "../hooks/use-auth0-client";
-import { UserType } from "../types";
 import "./profile.scss";
-import React, { useEffect, useState } from "react";
 
-const Profile: React.FC = () => {
+import React, { useEffect, useState } from "react";
+import { getUser } from "../apis";
+import { type UserType } from "../types";
+import { useAuth0Client } from "../hooks/use-auth0-client";
+
+const Profile = () => {
   const auth0Client = useAuth0Client();
   const [user, setUser] = useState<UserType | null>(null);
 
@@ -15,12 +16,15 @@ const Profile: React.FC = () => {
         const user = await getUser(token);
         setUser(user);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
     })();
   }, [auth0Client]);
 
-  if (user === null) return null;
+  if (user === null) {
+    return null;
+  }
+
   return (
     <div className="posting--profile">
       <div className="posting--profile-top">

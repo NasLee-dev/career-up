@@ -1,5 +1,3 @@
-// career-up/apps/posting/src/components/write-post.tsx
-
 import "./write-post.scss";
 
 import React, { useRef } from "react";
@@ -11,16 +9,13 @@ interface WritePostProps {
 
 const WritePost: React.FC<WritePostProps> = ({ writePost }) => {
   const messageRef = useRef<HTMLTextAreaElement>(null);
-
   const onWriteClick = async () => {
-    if (messageRef.current === null) {
-      return;
+    if (messageRef.current) {
+      await writePost(
+        messageRef.current.value.replace(/(?:\r\n|\r|\n)/g, "<br />")
+      );
+      messageRef.current.value = "";
     }
-
-    await writePost(
-      messageRef.current.value.replace(/(?:\r\n|\r|\n)/g, "<br />")
-    );
-    messageRef.current.value = "";
   };
 
   return (
