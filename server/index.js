@@ -4,11 +4,12 @@ const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 const AUTH0_DOMAIN = "dev-3i3bixd1upnmoerz.us.auth0.com";
+// const AUTH0_DOMAIN = "dev-vcrmf0xuep020tri.us.auth0.com";
 
 server.use(middlewares);
 server.use(async (req, res, next) => {
   if (await isAuthorized(req)) {
-    next(); // continue to JSON Server router
+    next();
   } else {
     res.sendStatus(401);
   }

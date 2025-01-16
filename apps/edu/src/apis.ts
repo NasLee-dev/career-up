@@ -24,11 +24,16 @@ export async function getCourseContents(
   return await response.json();
 }
 
-export async function getUser(token: string): Promise<UserType> {
-  const response = await fetch(`http://localhost:4000/users`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return await response.json();
+export async function getUser(token: string): Promise<UserType | null> {
+  try {
+    const response = await fetch(`http://localhost:4000/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
