@@ -37,7 +37,7 @@ export async function removePost(token: string, id: number): Promise<void> {
 }
 
 export async function getUser(token: string): Promise<UserType> {
-  const response = await fetch("http://localhost:4000/users", {
+  const response = await fetch("http://localhost:4000/user", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

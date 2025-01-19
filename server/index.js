@@ -3,8 +3,8 @@ const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
-const AUTH0_DOMAIN = "dev-3i3bixd1upnmoerz.us.auth0.com";
-// const AUTH0_DOMAIN = "dev-vcrmf0xuep020tri.us.auth0.com";
+// const AUTH0_DOMAIN = "dev-3i3bixd1upnmoerz.us.auth0.com";
+const AUTH0_DOMAIN = "dev-vcrmf0xuep020tri.us.auth0.com";
 
 server.use(middlewares);
 server.use(async (req, res, next) => {
@@ -52,7 +52,6 @@ async function isAuthorized(req) {
         Authorization,
       },
     });
-
     const json = await response.json();
     req.user = json;
     return true;
