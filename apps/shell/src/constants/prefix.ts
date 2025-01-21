@@ -7,5 +7,5 @@ export const appNetworkBasename = `/${appNetworkPrefix}`;
 export const appEduPrefix = "edu";
 export const appEduBasename = `/${appEduPrefix}`;
 
-export const appJobPrefix = "network";
+export const appJobPrefix = "job";
 export const appJobBasename = `/${appJobPrefix}`;

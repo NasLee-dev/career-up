@@ -43,6 +43,16 @@ server.listen(4000, () => {
   console.log("JSON Server is running");
 });
 
+server.get("/my-network", (req, res) => {
+  res.jsonp({
+    connectionCount: 811,
+    contactCount: 3721,
+    eventCount: 6,
+    pageCount: 0,
+    user: req.user,
+  });
+});
+
 async function isAuthorized(req) {
   try {
     const Authorization = req.headers.authorization;
