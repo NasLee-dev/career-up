@@ -1,8 +1,10 @@
-import { AppRoutingManager } from "@career-up/shell-router";
 import React from "react";
+import { AppRoutingManager } from "@career-up/shell-router";
 import { RouteObject } from "react-router-dom";
 import { Auth0ClientProvider } from "./provider/auth0-client-provider";
 import { RecoilRoot } from "recoil";
+import Layout from "./components/layout";
+import "./index.css"
 
 export const routes: RouteObject[] = [
   {
@@ -10,7 +12,9 @@ export const routes: RouteObject[] = [
     element: (
       <RecoilRoot>
         <Auth0ClientProvider>
-          <AppRoutingManager type="app-network" />
+          <Layout>
+            <AppRoutingManager type="app-network" />
+          </Layout>
         </Auth0ClientProvider>
       </RecoilRoot>
     ),
@@ -18,7 +22,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <div className="network--text-9xl">Network Page</div>,
+        element: <div className="network--text-5xl">Network Page</div>,
       },
     ],
   },

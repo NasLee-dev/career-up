@@ -1,4 +1,7 @@
 /* career-up/apps/shell/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .global-nav {
   background-color: var(--white);
