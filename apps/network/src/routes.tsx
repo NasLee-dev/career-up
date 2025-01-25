@@ -4,7 +4,8 @@ import { RouteObject } from "react-router-dom";
 import { Auth0ClientProvider } from "./provider/auth0-client-provider";
 import { RecoilRoot } from "recoil";
 import Layout from "./components/layout";
-import "./index.css"
+import "./index.css";
+import PageHome from "./pages/page-home";
 
 export const routes: RouteObject[] = [
   {
@@ -22,7 +23,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <div className="network--text-5xl">Network Page</div>,
+        element: <PageHome />,
       },
     ],
   },

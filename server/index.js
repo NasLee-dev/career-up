@@ -38,11 +38,6 @@ server.post("/posts", (req, res, next) => {
   next();
 });
 
-server.use(router);
-server.listen(4000, () => {
-  console.log("JSON Server is running");
-});
-
 server.get("/my-network", (req, res) => {
   res.jsonp({
     connectionCount: 811,
@@ -51,6 +46,12 @@ server.get("/my-network", (req, res) => {
     pageCount: 0,
     user: req.user,
   });
+});
+
+server.use(router);
+
+server.listen(4000, () => {
+  console.log("JSON Server is running");
 });
 
 async function isAuthorized(req) {

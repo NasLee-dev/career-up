@@ -5,7 +5,7 @@ export async function getMyNetwork(token: string): Promise<MyNetworkType> {
     const response = await fetch("http://localhost:4000/my-network", {
       headers: {
         Authorization: `Bearer ${token}`,
-      }
+      },
     });
     return await response.json();
   } catch (error) {
@@ -19,7 +19,7 @@ export async function getConnections(token: string): Promise<ConnectionType[]> {
     const response = await fetch("http://localhost:4000/connections", {
       headers: {
         Authorization: `Bearer ${token}`,
-      }
+      },
     });
     return await response.json();
   } catch (error) {
