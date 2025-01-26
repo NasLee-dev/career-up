@@ -48,6 +48,14 @@ server.get("/my-network", (req, res) => {
   });
 });
 
+server.get("/apply-status", (req, res) => {
+  res.jsonp({
+    myJobsCount: 13,
+    myOnlineClassesCount: 11,
+    mySavedUpdatesCount: 1,
+  });
+});
+
 server.use(router);
 
 server.listen(4000, () => {
