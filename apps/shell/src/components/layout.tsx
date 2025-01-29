@@ -8,8 +8,10 @@ import {
 } from "../constants/prefix";
 import { Button, Icon } from "@career-up/ui-kit";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useShellNavigateListener } from "@career-up/shell-router";
 
 export default function Layout() {
+  useShellNavigateListener();
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const handleLogin = async () => {
     await loginWithRedirect({
