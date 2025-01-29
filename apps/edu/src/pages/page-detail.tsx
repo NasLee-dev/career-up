@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { selectAtom } from "jotai/utils";
 import { coursesAtom } from "../atoms";
 import { CourseDetailItem } from "../components/course-detail-item";
-import { useAuth0Client } from "../hooks/use-auth0-client";
 import { CourseContentsType } from "../types";
 import { getCourseContents } from "../apis";
 import { CourseContents } from "../components/course-contents";
 import CourseActions from "../components/course-actions";
+import { useAuth0Client } from "@career-up/shell-router";
 
 export const PageDetail: React.FC = () => {
   const { id } = useParams();

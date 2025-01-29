@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
-import { useAuth0Client } from "../hooks/use-auth0-client";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/create";
 import { done, fail, start } from "../redux/modules/job";
 import { getJobs } from "../apis";
 import JobList from "../components/job-list";
+import { useAuth0Client } from "@career-up/shell-router";
 
 const JobListContainer: React.FC = () => {
   const auth0Client = useAuth0Client();

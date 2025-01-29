@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
-import { useAuth0Client } from "../hooks/use-auth0-client";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/create";
 import { done, fail, start } from "../redux/modules/applyStatus";
 import { getApplyStatus } from "../apis";
 import ApplyStatus from "../components/apply-status";
+import { useAuth0Client } from "@career-up/shell-router";
 
 const ApplyStatusContainer: React.FC = () => {
   const auth0Client = useAuth0Client();
