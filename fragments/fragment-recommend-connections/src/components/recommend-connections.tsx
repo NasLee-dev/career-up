@@ -1,6 +1,6 @@
 import { ConnectionType } from "../types";
 import Connection from "./connection";
-import "./recommend-connections.scss";
+import "./recommend-connections.css";
 
 import React, { useEffect } from "react";
 
