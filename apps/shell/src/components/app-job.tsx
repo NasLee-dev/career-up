@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { appJobBasename } from "../constants/prefix";
-import { useShellEvent } from "@career-up/shell-router";
-import inject from "job/injector";
+import { InjectFunctionType, useShellEvent } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities";
 
 export default function AppJob() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -15,13 +15,24 @@ export default function AppJob() {
 
   useEffect(() => {
     if (!isFirstRunRef.current) return;
-
-    unmountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appJobBasename, ""),
-    });
     isFirstRunRef.current = false;
+
+    importRemote<{ default: InjectFunctionType }>({
+      url: "http://localhost:3004",
+      scope: "job",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    })
+      .then(({ default: inject }) => {
+        unmountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appJobBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [location]);
 
   useEffect(() => {

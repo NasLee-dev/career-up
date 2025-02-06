@@ -22,13 +22,17 @@ export default function AppEdu() {
       scope: "edu",
       module: "injector",
       remoteEntryFileName: "remoteEntry.js",
-    }).then(({ default: inject }) => {
-      unmountRef.current = inject({
-        routerType: "memory",
-        rootElement: wrapperRef.current!,
-        basePath: location.pathname.replace(appEduBasename, ""),
+    })
+      .then(({ default: inject }) => {
+        unmountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appEduBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.error("Error while loading app-edu", error);
       });
-    });
   }, [location]);
 
   useEffect(() => {

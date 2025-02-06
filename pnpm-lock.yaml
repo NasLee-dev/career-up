@@ -272,6 +272,9 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.10.4
         version: 7.26.0(@babel/core@7.26.0)
+      '@tailwindcss/nesting':
+        specifier: 0.0.0-insiders.565cd3e
+        version: 0.0.0-insiders.565cd3e(postcss@8.4.49)
       '@types/node':
         specifier: ^22.10.5
         version: 22.10.5
@@ -347,6 +350,9 @@ importers:
       '@career-up/ui-kit':
         specifier: workspace:*
         version: link:../../packages/ui-kit
+      '@module-federation/utilities':
+        specifier: ^3.1.40
+        version: 3.1.40(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.97.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -447,6 +453,9 @@ importers:
       '@module-federation/utilities':
         specifier: ^3.1.40
         version: 3.1.40(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.97.1)
+      '@tailwindcss/nesting':
+        specifier: 0.0.0-insiders.565cd3e
+        version: 0.0.0-insiders.565cd3e(postcss@8.4.49)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1830,6 +1839,11 @@ packages:
 
   '@swc/types@0.1.17':
     resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
+
+  '@tailwindcss/nesting@0.0.0-insiders.565cd3e':
+    resolution: {integrity: sha512-WhHoFBx19TnH/c+xLwT/sxei6+4RpdfiyG3MYXfmLaMsADmVqBkF7B6lDalgZD9YdM459MF7DtxVbWkOrV7IaQ==}
+    peerDependencies:
+      postcss: ^8.2.15
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -3633,6 +3647,12 @@ packages:
     engines: {node: ^10 || ^12 || >= 14}
     peerDependencies:
       postcss: ^8.1.0
+
+  postcss-nested@5.0.6:
+    resolution: {integrity: sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
 
   postcss-nested@6.2.0:
     resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
@@ -5675,6 +5695,11 @@ snapshots:
   '@swc/types@0.1.17':
     dependencies:
       '@swc/counter': 0.1.3
+
+  '@tailwindcss/nesting@0.0.0-insiders.565cd3e(postcss@8.4.49)':
+    dependencies:
+      postcss: 8.4.49
+      postcss-nested: 5.0.6(postcss@8.4.49)
 
   '@types/argparse@1.0.38': {}
 
@@ -7721,6 +7746,11 @@ snapshots:
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.49)
       postcss: 8.4.49
+
+  postcss-nested@5.0.6(postcss@8.4.49):
+    dependencies:
+      postcss: 8.4.49
+      postcss-selector-parser: 6.1.2
 
   postcss-nested@6.2.0(postcss@8.4.49):
     dependencies:

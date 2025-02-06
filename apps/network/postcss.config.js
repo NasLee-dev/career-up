@@ -8,8 +8,8 @@
 // };
 module.exports = {
   plugins: {
-    'tailwindcss/nesting': {},
+    "@tailwindcss/nesting": {},
     tailwindcss: {},
     autoprefixer: {},
-  }
-}
+  },
+};

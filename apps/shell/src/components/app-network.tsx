@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { appNetworkBasename } from "../constants/prefix";
-import { useShellEvent } from "@career-up/shell-router";
-import inject from "network/injector";
+import { InjectFunctionType, useShellEvent } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities";
 
 export default function AppNetwork() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -15,13 +15,24 @@ export default function AppNetwork() {
 
   useEffect(() => {
     if (!isFirstRunRef.current) return;
-
-    unmountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appNetworkBasename, ""),
-    });
     isFirstRunRef.current = false;
+
+    importRemote<{ default: InjectFunctionType }>({
+      url: "http://localhost:3003",
+      scope: "network",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    })
+      .then(({ default: inject }) => {
+        unmountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appNetworkBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [location]);
 
   useEffect(() => {
