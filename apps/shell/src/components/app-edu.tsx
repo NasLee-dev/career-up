@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { appEduBasename } from "../constants/prefix";
-import { useShellEvent } from "@career-up/shell-router";
-import inject from "edu/injector";
+import { InjectFunctionType, useShellEvent } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities";
 
 export default function AppEdu() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -15,13 +15,20 @@ export default function AppEdu() {
 
   useEffect(() => {
     if (!isFirstRunRef.current) return;
-
-    unmountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appEduBasename, ""),
-    });
     isFirstRunRef.current = false;
+
+    importRemote<{ default: InjectFunctionType }>({
+      url: "http://localhost:3002",
+      scope: "edu",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    }).then(({ default: inject }) => {
+      unmountRef.current = inject({
+        routerType: "memory",
+        rootElement: wrapperRef.current!,
+        basePath: location.pathname.replace(appEduBasename, ""),
+      });
+    });
   }, [location]);
 
   useEffect(() => {
