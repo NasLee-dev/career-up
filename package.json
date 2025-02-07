@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "turbo start:live",
     "build": "turbo build",
+    "build:packages": "turbo build --filter=@career-up/shell-router --filter=@career-up/ui-kit",
     "serve": "turbo build:start"
   },
   "keywords": [],
