@@ -18,7 +18,7 @@ export default function AppEdu() {
     isFirstRunRef.current = false;
 
     importRemote<{ default: InjectFunctionType }>({
-      url: "http://localhost:3002",
+      url: process.env.REACT_APP_MICROAPP_EDU!,
       scope: "edu",
       module: "injector",
       remoteEntryFileName: "remoteEntry.js",

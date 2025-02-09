@@ -18,7 +18,7 @@ export default function AppNetwork() {
     isFirstRunRef.current = false;
 
     importRemote<{ default: InjectFunctionType }>({
-      url: "http://localhost:3003",
+      url: process.env.REACT_APP_MICROAPP_NETWORK!,
       scope: "network",
       module: "injector",
       remoteEntryFileName: "remoteEntry.js",

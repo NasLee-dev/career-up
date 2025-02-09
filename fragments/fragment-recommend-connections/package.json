@@ -4,7 +4,7 @@
   "scripts": {
     "build": "pnpm -w build:packages && webpack --mode production",
     "build:dev": "pnpm -w build:packages && webpack --mode development",
-    "build:start": "cd dist && PORT=5001 npx serve",
+    "build:start": "cd dist && PORT=5001 npx serve -s",
     "start": "webpack serve --mode development",
     "start:live": "webpack serve --mode development --live-reload --hot"
   },
@@ -26,7 +26,7 @@
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
-    "dotenv-webpack": "^8.0.1",
+    "dotenv-webpack": "^8.1.0",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "html-webpack-plugin": "^5.3.2",
@@ -43,6 +43,7 @@
     "@babel/runtime": "^7.26.0",
     "@career-up/shell-router": "workspace:*",
     "@career-up/ui-kit": "workspace:*",
+    "@types/node": "^22.10.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
