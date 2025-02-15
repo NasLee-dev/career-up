@@ -1,9 +1,6 @@
 module.exports = {
   prefix: "network--",
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./index.html",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./src/**/*.css", "./index.html"],
   purge: [],
   darkMode: false,
   theme: {

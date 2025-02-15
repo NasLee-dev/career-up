@@ -1,7 +1,7 @@
 import "./page-home.scss";
 
 import React, { Suspense, useEffect, useState } from "react";
-import Profile from "../components/profile";
+import Profile from "../containers/profile-container";
 import { PostType } from "../types";
 import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";

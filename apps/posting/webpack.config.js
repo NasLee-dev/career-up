@@ -15,6 +15,13 @@ module.exports = (_, argv) => ({
   devServer: {
     port: 3001,
     historyApiFallback: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: true,
+      },
+    },
   },
 
   module: {
@@ -66,6 +73,7 @@ module.exports = (_, argv) => ({
         },
         "@career-up/ui-kit": {
           singleton: true,
+          shareScope: "v2",
         },
       },
     }),

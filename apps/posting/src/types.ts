@@ -14,4 +14,8 @@ export interface PostType {
 export interface UserType extends User {
   view_count: number;
   update_count: number;
+  courses: {
+    course_id: number;
+    done: boolean;
+  }[];
 }
