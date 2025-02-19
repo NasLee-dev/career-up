@@ -2,21 +2,15 @@ import { ConnectionType } from "../types";
 import Connection from "./connection";
 import "./recommend-connections.css";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 interface RecommendConnectionsProps {
   connections: ConnectionType[];
-  fetchConnections: () => Promise<void>;
 }
 
 const RecommendConnections: React.FC<RecommendConnectionsProps> = ({
   connections,
-  fetchConnections,
 }) => {
-  useEffect(() => {
-    fetchConnections();
-  }, [fetchConnections]);
-
   return (
     <div className="fragment-recommend-connections--recommend-connections">
       <div className="fragment-recommend-connections--recommend-connections-top">
